@@ -5,8 +5,11 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-  GenStack myStack(10);
 
+GenStack<float> FloatStack;
+GenStack<int> IntStack;
+
+/*
   myStack.push('R');
   cout << "Push 1: " << myStack.peek() << endl;
 
@@ -31,7 +34,7 @@ int main(int argc, char const *argv[])
   {
     cout << "Popping: " << myStack.pop() << endl;
   }
-
+*/
 
   return 0;
 }

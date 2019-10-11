@@ -1,4 +1,4 @@
-#include "GenStack.h"
+/*#include "GenStack.h"
 #include <iostream>
 
 using namespace std;
@@ -75,3 +75,4 @@ bool GenStack::isEmpty()
 {
   return (top == -1);
 }
+*/
