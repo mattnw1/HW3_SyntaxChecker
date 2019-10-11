@@ -17,6 +17,7 @@ class GenStack
 
     bool isFull();
     bool isEmpty();
+    int getSize();
 
 
   private:
@@ -30,8 +31,8 @@ class GenStack
     GenStack<T>::GenStack() //Default constructor
     {
       //initialization of default values
-      myArray = new T[128];
-      size = 128;
+      myArray = new T[10];
+      size = 10;
       top = -1;
     }
 
@@ -42,6 +43,19 @@ class GenStack
       size = maxSize;
       top = -1;
     }
+
+    /*
+    template<class T>
+    GenStack<T>::GenStack(GenStack<T> &toCopy)
+    {
+      GenStack<T> Temp = GenStack(toCopy.size;
+      copiedStack = new T[toCopy.size];
+
+      for(int i = 0 i > toCopy.size; ++i)
+        push(toCopy.pop());
+    }
+    */
+
 
     template <class T>
     GenStack<T>::~GenStack()
@@ -56,19 +70,23 @@ class GenStack
       //check if its full; if its full, throw an exception
       //this is your job
       int x = -1;
-      try
-      {
         if (isFull())
         {
-          throw x;
+          T *temp = new T[size*2]; // create new array of double the size
+
+          for (int i = 0; i < size; i++)
+          {
+            temp[i] = myArray[i]; //temp now has all of the contents of myArray
+          }
+          delete[] myArray; // to ensure that there are no memory leaks
+          size *=2;  // updating size
+          myArray = temp;
+
+
         }
         myArray[++top] = d; //adds to myArray stack
-      }
-      catch (int x)
-      {
-        cout << "Error: Stack is full." << endl;
-      }
     }
+
 
     template <class T>
     T GenStack<T>::pop()
@@ -85,6 +103,7 @@ class GenStack
       catch (int x)
       {
         cout << "Error: Stack is empty" << endl;
+        exit(1); //leaves program
       }
     }
 
@@ -98,6 +117,7 @@ class GenStack
     template <class T>
     bool GenStack<T>::isFull()
     {
+
       return (top == size-1);
     }
 
@@ -105,4 +125,11 @@ class GenStack
     bool GenStack<T>::isEmpty()
     {
       return (top == -1);
+    }
+
+    template <class T>
+    int GenStack<T>::getSize()
+    {
+      //check if isEmpty
+      return size;
     }

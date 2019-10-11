@@ -6,7 +6,21 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 
-GenStack<float> FloatStack;
+GenStack<float> FloatStack(1);
+FloatStack.pop();
+FloatStack.push(1.2);
+cout << "Peeking FloatStack: " << FloatStack.peek() << endl;
+cout << "Getting size of FloatStack: " << FloatStack.getSize() << endl;
+
+FloatStack.push(2.21);
+cout << "Getting size of FloatStack: " << FloatStack.getSize() << endl;
+
+FloatStack.push(122.2);
+cout << "Peeking FloatStack: " << FloatStack.peek() << endl;
+cout << "Getting size of FloatStack: " << FloatStack.getSize() << endl;
+
+
+
 GenStack<int> IntStack;
 
 /*
