@@ -17,6 +17,10 @@ https://www.cprogramming.com/tutorial/templates.html
 https://stackoverflow.com/questions/9355815/turning-a-non-template-class-into-a-template
 https://stackoverflow.com/questions/35871847/not-a-class-namespace-or-enumeration-after-making-a-template-class/35871873
 
+
+string comparison
+https://linux.die.net/man/3/strcmp
+
 issues: tbd
 
 Instructions to run: tbd

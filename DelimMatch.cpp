@@ -1,6 +1,4 @@
-/*Michael Kulinich
-2328386
-kulinich@chapman.edu
+/*
 Matthew Nwerem
 2277158
 nwere100@mail.chapman.edu
@@ -11,7 +9,10 @@ This is cpp file for DelimMatch class
 */
 
 #include "DelimMatch.h"
-
+#include "GenStack.h"
+#include <iostream>
+#include <fstream>
+#include <string.h>
 
 using namespace std;
 
@@ -20,11 +21,11 @@ DelimMatch::DelimMatch(string fileName)
   inputFile = fileName;
 }
 
-bool DelimMatch::ParenMatch()
+void DelimMatch::checkDelim()
 {
-  GenStack<T> matchStack;
+  GenStack<char> matchStack(10);
   string line; //used to read line by line from file
-  int lineCount = 0; //find what line is being read in the file
+  int lineCount = 1; //find what line is being read in the file
   inFile.open(inputFile);
 
   if(!inFile)
@@ -33,27 +34,49 @@ bool DelimMatch::ParenMatch()
     exit(1);
   }
 
-  while (inFile >> line)
+  while (getline(inFile, line))
   {
     for (int i = 0; i < line.size(); ++i)
     {
-      if(i == '(')
+      if(line[i] == '(')
+
       {
-        matchStack.push('(')
+        matchStack.push('(');
+        cout << "Got a '(' be pround nigga" <<endl;
+      }
+      else if (line[i] == ')')
+      {
+        if(matchStack.isEmpty())
+        {
+          inFile.close();
+        }
+        if(matchStack.peek() != '(')
+        {
+          inFile.close();  //not the correct type
+        }
+        matchStack.pop(); //that means that we are good to go, comparison worked
+      }
+
+      if (matchStack.isEmpty())
+      {
+        //means that the comparison worked/matched
+      }
+
+      else
+      {
+        inFile.close();
       }
     }
 
+    ++lineCount;
   }
 
-
-    }
-inFile.close();
-
+  inFile.close();
 }
 
 
 
-FileHelper::~FileHelper()
+DelimMatch::~DelimMatch()
 {
 
 }

@@ -1,11 +1,13 @@
-#include "GenStack.h"
+#include "DelimMatch.h"
+
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-
+/* Testing template stacks
 GenStack<float> FloatStack(1);
 FloatStack.pop();
 FloatStack.push(1.2);
@@ -18,10 +20,33 @@ cout << "Getting size of FloatStack: " << FloatStack.getSize() << endl;
 FloatStack.push(122.2);
 cout << "Peeking FloatStack: " << FloatStack.peek() << endl;
 cout << "Getting size of FloatStack: " << FloatStack.getSize() << endl;
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ifstream inFile;
+string inputFile;
+fstream outFile;
+string line;
+int lineCount = 1;
+
+cout << "------------- This Program is a Syntax Checker -------------" << endl;
+cout << "\n" << endl;
+cout << "\n" << endl;
+cout << "Enter the location of a source code to be analyzed" << endl;
+cin >> inputFile;
+cout << "Source code entered..." << endl;
+cout << "Beginning Syntax Checker.." << endl;
+cout << "\n" << endl;
+
+DelimMatch matcher(inputFile);
+matcher.checkDelim();
+cout << "Got past matcher" << endl;
 
 
 
-GenStack<int> IntStack;
+
+
+
 
 /*
   myStack.push('R');
