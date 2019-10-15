@@ -31,7 +31,6 @@ int lineCount = 1;
 
 cout << "------------- This Program is a Syntax Checker -------------" << endl;
 cout << "\n" << endl;
-cout << "\n" << endl;
 cout << "Enter the location of a source code to be analyzed" << endl;
 cin >> inputFile;
 cout << "Source code entered..." << endl;
@@ -40,13 +39,8 @@ cout << "\n" << endl;
 
 DelimMatch matcher(inputFile);
 matcher.checkDelim();
-cout << "Got past matcher" << endl;
 
-
-
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
   myStack.push('R');

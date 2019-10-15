@@ -1,4 +1,17 @@
+/*
+Matthew Nwerem
+2277158
+nwere100@mail.chapman.edu
+
+GenStack.h
+This is a header file for GenStack Class that
+creates stacks of any type. Appropriate methods for the data type are
+implemented, and error checking is included.
+*/
+
 #include <iostream>
+#include <exception>
+
 
 using namespace std;
 
@@ -18,12 +31,14 @@ class GenStack
     bool isFull();
     bool isEmpty();
     int getSize();
+    int getTop();
 
 
   private:
     int size;
     int top;
     T *myArray;
+    int x;
 
 };
 
@@ -57,6 +72,8 @@ class GenStack
     */
 
 
+
+
     template <class T>
     GenStack<T>::~GenStack()
     {
@@ -81,8 +98,6 @@ class GenStack
           delete[] myArray; // to ensure that there are no memory leaks
           size *=2;  // updating size
           myArray = temp;
-
-
         }
         myArray[++top] = d; //adds to myArray stack
     }
@@ -111,13 +126,24 @@ class GenStack
     T GenStack<T>::peek()
     {
       //check if isEmpty
-      return myArray[top];
+      try
+      {
+        if (isEmpty())
+        {
+          throw x;
+        }
+        return myArray[top];
+      }
+      catch (int x)
+      {
+        cout << "Error: Stack is empty" << endl;
+        exit(1); //leaves program
+      }
     }
 
     template <class T>
     bool GenStack<T>::isFull()
     {
-
       return (top == size-1);
     }
 
@@ -131,5 +157,36 @@ class GenStack
     int GenStack<T>::getSize()
     {
       //check if isEmpty
-      return size;
+      try
+      {
+        if (isEmpty())
+        {
+          throw x;
+        }
+        return size;
+      }
+      catch (int x)
+      {
+        cout << "Error: Stack is empty" << endl;
+        exit(1); //leaves program
+      }
+    }
+
+    template <class T>
+    int GenStack<T>::getTop()
+    {
+      //check if isEmpty
+      try
+      {
+        if (isEmpty())
+        {
+          throw x;
+        }
+        return top;
+      }
+      catch (int x)
+      {
+        cout << "Error: Stack is empty" << endl;
+        exit(1); //leaves program
+      }
     }
